@@ -1,11 +1,10 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-type ITask = {
-  title: string | number;
+export type ITask = {
+  title: string;
   id: number | string;
-  time: string | number;
-  status: boolean;
-  [key: string]: string | number | boolean;
+  time: string;
+  status?: boolean;
 };
 
 type TasksState = {
@@ -21,15 +20,15 @@ const tasksReducer = createSlice({
   initialState,
   reducers: {
     addTask(state, action) {
-      const taskTime = Date();
+      const taskTime = new Date().toLocaleString();
       const taskId = nanoid();
       const task: ITask = {
-        title: action.payload.title,
+        title: action.payload,
         id: taskId,
         time: taskTime,
-        status: action.payload.status,
+        status: false,
       };
-      state.list = { ...state.list, ...task };
+      state.list = [...state.list, task];
     },
   },
 });
