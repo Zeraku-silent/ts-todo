@@ -31,7 +31,13 @@ export const TaskInput: React.FC = () => {
           color={"black"}
           placeholder="Что будем делать?"
         ></Input>
-        <Button onClick={createTask} bg={"white"}>
+        <Button
+          onClick={createTask}
+          bgGradient="linear(to-r, teal.200, green.600)"
+          _hover={{
+            bgGradient: "linear(to-r,  red.600, red.200)",
+          }}
+        >
           Добавить
         </Button>
       </Stack>

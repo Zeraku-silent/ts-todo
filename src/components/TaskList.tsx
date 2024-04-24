@@ -8,7 +8,7 @@ export const TaskList: React.FC = () => {
 
   return (
     <Box mt={10}>
-      <Flex justify={"center"} gap={10}>
+      <Flex wrap={"wrap"} justify={"center"} gap={10}>
         {tasks.map((task) => (
           <Task key={task.id} task={task} />
         ))}
