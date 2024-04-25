@@ -13,14 +13,13 @@ export const TaskInput: React.FC = () => {
       createTask();
     }
   };
-  // console.log(tasks);
 
   const createTask = useCallback(() => {
     dispatch(addTask(input));
     setInput("");
   }, [dispatch, input]);
   return (
-    <Box mr={"auto"} ml={"auto"} w={"30%"} mt={5}>
+    <Box mr={"auto"} ml={"auto"} w={"30%"} minW={340} mt={5}>
       <Stack direction={"row"}>
         <Input
           onKeyDown={handleSubmit}

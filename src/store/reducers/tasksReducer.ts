@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice, nanoid } from "@reduxjs/toolkit";
 
 export type ITask = {
   title: string;
@@ -19,7 +19,7 @@ const tasksReducer = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    addTask(state, action) {
+    addTask(state, action: PayloadAction<string>) {
       const taskTime = new Date().toLocaleString();
       const taskId = nanoid();
       const task: ITask = {
@@ -30,9 +30,12 @@ const tasksReducer = createSlice({
       };
       state.list = [...state.list, task];
     },
+    removeTask(state, action: PayloadAction<ITask>) {
+      state.list = state.list.filter((task) => task.id !== action.payload.id);
+    },
   },
 });
 
 export default tasksReducer.reducer;
 
-export const { addTask } = tasksReducer.actions;
+export const { addTask, removeTask } = tasksReducer.actions;
