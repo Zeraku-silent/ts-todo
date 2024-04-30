@@ -37,7 +37,7 @@ export const TaskInput: React.FC = () => {
             bgGradient: "linear(to-r,  red.600, red.200)",
           }}
         >
-          Добавить
+          Добавить задачу
         </Button>
       </Stack>
     </Box>
